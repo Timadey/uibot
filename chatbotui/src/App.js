@@ -37,7 +37,12 @@ const App = () => {
   return (
     <div className="App">
       <div className="chat-container">
-        <div className="header">University of Ibadan Info Bot</div>
+        {messages.length === 0 && (
+          <div className="home-page">
+            <img src="/ui_logo.png" alt="School Logo" className="school-logo" />
+            <p className="description">The University of Ibadan AI Assistant is an AI-powered chatbot designed to help students, faculty, and staff efficiently access university-related information. Ask me anything about UI! </p>
+          </div>
+        )}
         <div className="messages">
           {messages.map((message, index) => (
             <div key={index} className={`message-container ${message.sender}`}>
@@ -60,6 +65,7 @@ const App = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             placeholder="Type your message..."
+            className="input-box"
           />
           <button onClick={sendMessage}>
             <img src="/send-icon.svg" alt="Send" className="send-icon" />
