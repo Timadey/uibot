@@ -26,7 +26,8 @@ const App = () => {
     setMessages((prevMessages) => [...prevMessages, { sender: 'bot', text: '...' }]);
 
     try {
-      const response = await fetch('https://friendly-eureka-p97q44vjwq7269jw-8000.app.github.dev/chat', {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: input }),
