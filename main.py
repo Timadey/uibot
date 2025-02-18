@@ -11,6 +11,8 @@ import os
 
 load_dotenv()
 COHERE_API_KEY  = os.getenv("COHERE_API_KEY")
+APP_URL = os.getenv("APP_URL")
+REACT_APP_URL = os.getenv("REACT_APP_URL")
 
 co = cohere.Client(COHERE_API_KEY)
 
@@ -19,8 +21,8 @@ app = FastAPI()
 # Allow CORS for frontend
 origins = [
     "http://localhost:3000",
-    "https://friendly-eureka-p97q44vjwq7269jw-3000.app.github.dev",
-    "https://friendly-eureka-p97q44vjwq7269jw-8000.app.github.dev",
+    APP_URL,
+    REACT_APP_URL
 ]
 
 app.add_middleware(
